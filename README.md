@@ -5,6 +5,7 @@ $ hexo init //初始化
 $ hexo clean  //清理public文件夹
 $ hexo g //生成 
 $ hexo s //启动服务 本地访问：http://localhost:4000
+$ hexo deploy //部署到服务器上
 ```
 >  在public文件夹生成目标文件，提交GitHub
 
