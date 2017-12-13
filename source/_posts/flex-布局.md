@@ -20,6 +20,8 @@ center：居中对齐
 space-around：子容器沿主轴均匀分布，位于首尾两端的子容器到父容器的距离是子容器间距的一半。   
 space-between：子容器沿主轴均匀分布，位于首尾两端的子容器与父容器相切。
 
+<!-- more -->
+
 * align-items（垂直方向）
 flex-start：起始端对齐 
 flex-end：末尾段对齐  

@@ -19,6 +19,9 @@ tags:
 ```bash
    this.$store.commit('addList', this.content )
 ```
+
+<!-- more -->
+
 * action主要就是处理异步改变状态的方法
 ```bash
    this.$store.dispatch('addList', this.content )

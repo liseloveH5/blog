@@ -14,5 +14,8 @@ $ hexo deploy //部署到服务器上
 $ git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia
 
 ```
+
+[点击进入next主题配置详情](http://theme-next.iissnan.com/getting-started.html)
+
 > 下载主题在theme文件夹里
 > 引用方法：修改_config.yml中的theme: landscape改为theme: yilia，重新执行生成命令
