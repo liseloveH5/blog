@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="什么是作用域链和闭包当执行一段JavaScript代码（全局代码或函数）时，JavaScript引擎会为其创建一个作用域又称为执行上下文（Execution Context），在页面加载后会首先创建一个全局的作用域，然后每执行一个函数，会建立一个对应的作用域，从而形成了一条作用域链。每个作用域都有一条对应的作用域链，链头是全局作用域，链尾是当前函数作用域。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试题目总结">
+<meta property="og:url" content="http://yoursite.com/2017/12/05/面试题目总结/index.html">
+<meta property="og:site_name" content="liseloveH5的博客">
+<meta property="og:description" content="什么是作用域链和闭包当执行一段JavaScript代码（全局代码或函数）时，JavaScript引擎会为其创建一个作用域又称为执行上下文（Execution Context），在页面加载后会首先创建一个全局的作用域，然后每执行一个函数，会建立一个对应的作用域，从而形成了一条作用域链。每个作用域都有一条对应的作用域链，链头是全局作用域，链尾是当前函数作用域。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-06T10:49:25.354Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面试题目总结">
+<meta name="twitter:description" content="什么是作用域链和闭包当执行一段JavaScript代码（全局代码或函数）时，JavaScript引擎会为其创建一个作用域又称为执行上下文（Execution Context），在页面加载后会首先创建一个全局的作用域，然后每执行一个函数，会建立一个对应的作用域，从而形成了一条作用域链。每个作用域都有一条对应的作用域链，链头是全局作用域，链尾是当前函数作用域。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/05/面试题目总结/"/>
+
+
+
+
+
+  <title>面试题目总结 | liseloveH5的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/liseloveH5" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">liseloveH5的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-code">
+          <a href="/categories/代码" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            代码
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-essay">
+          <a href="/categories/随笔" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            随笔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-story">
+          <a href="/categories/小说" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            小说
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-draw">
+          <a href="/categories/画" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            画
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/05/面试题目总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dudu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liseloveH5的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">面试题目总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-05T15:52:10+08:00">
+                2017-12-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/代码/" itemprop="url" rel="index">
+                    <span itemprop="name">代码</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="什么是作用域链和闭包"><a href="#什么是作用域链和闭包" class="headerlink" title="什么是作用域链和闭包"></a>什么是作用域链和闭包</h3><p>当执行一段JavaScript代码（全局代码或函数）时，JavaScript引擎会为其创建一个作用域又称为执行上下文（Execution Context），在页面加载后会首先创建一个全局的作用域，然后每执行一个函数，会建立一个对应的作用域，从而形成了一条作用域链。每个作用域都有一条对应的作用域链，链头是全局作用域，链尾是当前函数作用域。</p>
+<a id="more"></a>
+<p>作用域链的作用是用于解析标识符，当函数被创建时（不是执行），会将this、arguments、命名参数和该函数中的所有局部变量添加到该当前作用域中，当JavaScript需要查找变量X的时候（这个过程称为变量解析），它首先会从作用域链中的链尾也就是当前作用域进行查找是否有X属性，如果没有找到就顺着作用域链继续查找，直到查找到链头，也就是全局作用域链，仍未找到该变量的话，就认为这段代码的作用域链上不存在x变量，并抛出一个引用错误（ReferenceError）的异常。</p>
+<blockquote>
+<p>闭包</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="keyword">var</span> a=<span class="number">2</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="built_in">console</span>.log(a);</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> bar;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> baz = foo();</div><div class="line">baz(); <span class="comment">//2   --这就是闭包的效果</span></div></pre></td></tr></table></figure>
+<p>结果：在外层作用域拿到了函数内部作用域定义的值<br>解释：因为bar()嵌套在foo()内部，bar()封闭（涵盖）了foo()的作用域；相当于在外层调用bar函数，在自己定义的词法作用域以外的地方执行。<br>这个例子有三层作用域，即外层、foo函数、bar函数。在外层作用域执行baz方法，最后返回值指向bar函数；bar封闭在foo函数内部，因此能获取到foo作用域；这样就在外层拿到了内部函数的作用域。<br>闭包的应用场景，避免污染全局变量</p>
+<h3 id="理解JavaScript的原型链以及JavaScript的继承方式"><a href="#理解JavaScript的原型链以及JavaScript的继承方式" class="headerlink" title="理解JavaScript的原型链以及JavaScript的继承方式"></a>理解JavaScript的原型链以及JavaScript的继承方式</h3><p>JavaScript中的每个对象都有一个prototype属性，我们称之为原型，而原型的值也是一个对象，因此它也有自己的原型，这样就串联起来了一条原型链，原型链的链头是object,它的prototype比较特殊，值为null。<br>当访问对象的一个属性时, 首先查找对象本身, 找到则返回; 若未找到, 则继续查找其原型对象的属性(如果还找不到实际上还会沿着原型链向上查找, 直至到根). 只要没有被覆盖的话, 对象原型的属性就能在所有的实例中找到，若整个原型链未找到则返回undefined<br>原型链的作用是用于对象继承，函数A的原型属性(prototype property)是一个对象，当这个函数被用作构造函数来创建实例时，该函数的原型属性将被作为原型赋值给所有对象实例，比如我们新建一个数组，数组的方法便从数组的原型上继承而来。</p>
+<ul>
+<li><p>instanceof-确定原型和实例之间的关系<br>用来判断某个构造函数的prototype属性是否存在另外一个要检测对象的原型链上</p>
+</li>
+<li><p>isPrototypeOf<br>用于测试一个对象是否存在于另一个对象的原型链上。</p>
+</li>
+</ul>
+<p>父类：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定义一个动物类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span> (<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="comment">// 属性</span></div><div class="line">  <span class="keyword">this</span>.name = name || <span class="string">'Animal'</span>;</div><div class="line">  <span class="comment">// 实例方法</span></div><div class="line">  <span class="keyword">this</span>.sleep = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">'正在睡觉！'</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 原型方法</span></div><div class="line">Animal.prototype.eat = <span class="function"><span class="keyword">function</span>(<span class="params">food</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">'正在吃：'</span> + food);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ul>
+<li>原型链继承<br>将父类的实例作为子类的原型</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params"></span>)</span>&#123;</div><div class="line">&#125;</div><div class="line">Cat.prototype = <span class="keyword">new</span> Animal();</div><div class="line">Cat.prototype.name = <span class="string">'cat'</span>;</div><div class="line"></div><div class="line"><span class="comment">//　Test Code</span></div><div class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> Cat();</div><div class="line"><span class="built_in">console</span>.log(cat.name);</div><div class="line"><span class="built_in">console</span>.log(cat.eat(<span class="string">'fish'</span>));</div><div class="line"><span class="built_in">console</span>.log(cat.sleep());</div><div class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Animal); <span class="comment">//true</span></div><div class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Cat); <span class="comment">//true</span></div></pre></td></tr></table></figure>
+<ul>
+<li>构造继承<br>使用父类的构造函数来增强子类实例，等于是复制父类的实例属性给子类（没用到原型）</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">  Animal.call(<span class="keyword">this</span>);</div><div class="line">  <span class="keyword">this</span>.name = name || <span class="string">'Tom'</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Test Code</span></div><div class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> Cat();</div><div class="line"><span class="built_in">console</span>.log(cat.name);</div><div class="line"><span class="built_in">console</span>.log(cat.sleep());</div><div class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Animal); <span class="comment">// false</span></div><div class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Cat); <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<ul>
+<li>组合继承<br>通过调用父类构造，继承父类的属性并保留传参的优点，然后通过将父类实例作为子类原型，实现函数复用</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">  Animal.call(<span class="keyword">this</span>);</div><div class="line">  <span class="keyword">this</span>.name = name || <span class="string">'Tom'</span>;</div><div class="line">&#125;</div><div class="line">Cat.prototype = <span class="keyword">new</span> Animal();</div><div class="line"></div><div class="line"><span class="comment">// Test Code</span></div><div class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> Cat();</div><div class="line"><span class="built_in">console</span>.log(cat.name);</div><div class="line"><span class="built_in">console</span>.log(cat.sleep());</div><div class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Animal); <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Cat); <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<p>特点：</p>
+<p>弥补了方式2的缺陷，可以继承实例属性/方法，也可以继承原型属性/方法<br>既是子类的实例，也是父类的实例<br>不存在引用属性共享问题<br>可传参<br>函数可复用<br>缺点：</p>
+<p>调用了两次父类构造函数，生成了两份实例（子类实例将子类原型上的那份屏蔽了）</p>
+<ul>
+<li>拷贝继承</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="keyword">var</span> animal = <span class="keyword">new</span> Animal();</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> p <span class="keyword">in</span> animal)&#123;</div><div class="line">Cat.prototype[p]=animal[p];</div><div class="line">&#125;</div><div class="line">Cat.prototype.name= name || <span class="string">"cat"</span>;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Test Code</span></div><div class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> Cat();</div><div class="line"><span class="built_in">console</span>.log(cat.name);</div><div class="line"><span class="built_in">console</span>.log(cat.sleep());</div><div class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Animal); <span class="comment">// false</span></div><div class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Cat); <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<ul>
+<li>实例继承<br>为父类实例添加新特性，作为子类实例返回</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="keyword">var</span> animal=<span class="keyword">new</span> Animal;</div><div class="line">animal.prototype.name= name || <span class="string">"cat"</span>;</div><div class="line"><span class="keyword">return</span> animal;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Test Code</span></div><div class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> Cat();</div><div class="line"><span class="built_in">console</span>.log(cat.name);</div><div class="line"><span class="built_in">console</span>.log(cat.sleep());</div><div class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Animal); <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Cat); <span class="comment">// false</span></div></pre></td></tr></table></figure>
+<h3 id="ES6的语法"><a href="#ES6的语法" class="headerlink" title="ES6的语法"></a>ES6的语法</h3><ul>
+<li><p>var  let const<br>var:不需要初始化 //var b    变量可重新赋值 //var b=2;b=4;<br>let:ES6语法，块级作用域(暂时性死区)，函数内部使用let定以后，对函数外部无影响（必须先声明后使用原则）<br>const:ES6语法，必须初始化，不可重新修改（只是保证变量名指向的地址不变，不保证地址的数据不变，可在多个模块间共享）</p>
+</li>
+<li><p>箭头函数<br>没有独立的上下文，没有this；也没有argument，super；<br>书写简洁，风格与其他语言统一</p>
+</li>
+<li><p>Set Map Symbol<br>Map保存键值对；Set是保存值的集合，唯一值；Symbols是一种特殊的、不可变得数据类型，可以作为对象属性的标识符使用；<br>for…of可以用来遍历数组，类数组对象，argument，字符串，Map和set<br>for…in用来遍历对象<br>foreach</p>
+</li>
+</ul>
+<h3 id="跨域的解决策略"><a href="#跨域的解决策略" class="headerlink" title="跨域的解决策略"></a>跨域的解决策略</h3><ul>
+<li>jsonp方式<br>iframe img script style等标签自带src属性，可以引入外部文件<br>通过请求，动态的添加script标签，改变src的路径</li>
+<li><p>postmessage<br>完成有限制的页面间通信，解决包括弹窗与父页面之间的通信/iframe嵌套页面之间的通信/标签页面之间的通信</p>
+</li>
+<li><p>CORS（Cross Origin Resource Share）对方服务端设置响应头<br>CORS请求默认不发送Cookie和HTTP认证信息。如果要把Cookie发到服务器，一方面要服务器同意，指定Access-Control-Allow-Credentials字段</p>
+</li>
+</ul>
+<h3 id="xss劫持（跨站攻击）"><a href="#xss劫持（跨站攻击）" class="headerlink" title="xss劫持（跨站攻击）"></a>xss劫持（跨站攻击）</h3><p>通过客户端执行一段自己的js代码，达到攻击效果<br>源头：input输入框，Ajax的onerror的返回信息<br>解决：加上一段验证代码，过滤掉诸如：style iframe script javascript html等关键字段</p>
+<h3 id="cookie-localStorage-sessionStorage的区别"><a href="#cookie-localStorage-sessionStorage的区别" class="headerlink" title="cookie localStorage sessionStorage的区别"></a>cookie localStorage sessionStorage的区别</h3><p>cookie：容量小，4K左右 保存在浏览器端，重复请求时，消耗带宽<br>sessionstorage：存储在服务器端，并发访问的时候消耗服务器资源  5M左右<br>localstorage除非强制清浏览器缓存，否则一直存在  sessionstorage随着浏览器关闭消失</p>
+<h3 id="webpack打包的原理"><a href="#webpack打包的原理" class="headerlink" title="webpack打包的原理"></a>webpack打包的原理</h3><p>将所有模块代码放在一个数组里，通过不同的数组id来访问不同的模块</p>
+<ul>
+<li>webpack 和 gulp 的区别<br>webpack 是一种打包工具，用于模块化方案，预编译模块化方案<br>gulp 是一种构建工具 工作流程代替手工操作，集成压缩js/css ；less/sass编译等自动化操作</li>
+</ul>
+<h3 id="域名输入URL之后，页面发生了什么"><a href="#域名输入URL之后，页面发生了什么" class="headerlink" title="域名输入URL之后，页面发生了什么"></a>域名输入URL之后，页面发生了什么</h3><p>1.域名解析<br>2.TCP/IP的三次握手<br>3.向服务器发送http请求下载资源<br>4.将远程服务器资源下载到本地<br>5.浏览器加载，计算和渲染<br>6.绘制到屏幕上面</p>
+<h3 id="this"><a href="#this" class="headerlink" title="this"></a>this</h3><p>指代当前函数作用域</p>
+<h3 id="BFC问题（块级格式上下文）"><a href="#BFC问题（块级格式上下文）" class="headerlink" title="BFC问题（块级格式上下文）"></a>BFC问题（块级格式上下文）</h3><p>块格式化上下文（block formatting context） 是页面上的一个独立的渲染区域，容器里面的子元素不会在布局上影响到外面的元素。它是决定块盒子的布局及浮动元素相互影响的一个因素。</p>
+<h3 id="水平垂直居中实现"><a href="#水平垂直居中实现" class="headerlink" title="水平垂直居中实现"></a>水平垂直居中实现</h3><p>行内元素：<br>text-algin:center;vertical-algin:middle;<br>块级元素：<br>margin:0 auto;<br>margin-top:50%;<br>translate:-50%;</p>
+<h3 id="网络-性能优化"><a href="#网络-性能优化" class="headerlink" title="网络/性能优化"></a>网络/性能优化</h3><p>使用CDN，让用户访问最近的资源，减少来回传输时间<br>合并压缩CSS/Js/图片/静态资源<br>css放顶部，js放底部<br>图片做预加载<br>首屏之外的做懒加载<br>做http缓存，用户可以重复使用本地缓存，减少对服务器的压力<br>大小超过10KB的css/img建议外链引用，以细化缓存粒度<br>小于10K的图片base64 DNS预解析</p>
+<p>少用全局变量，减少作用域链查找，缓存DOM查找结果<br>多个变量声明合并；<br>减少DOM操作次数<br>尽量避免在HTML标签中写style属性<br>不滥用float<br>用css3动画，避免css3渐变阴影效果<br>使用link来替代@import</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>谢谢你请我吃糖果！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="dudu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="dudu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/26/来总结下传说中的圣杯布局/" rel="next" title="来总结下传说中的三栏布局（圣杯布局、双飞翼布局、flex）">
+                <i class="fa fa-chevron-left"></i> 来总结下传说中的三栏布局（圣杯布局、双飞翼布局、flex）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/20/再见2017/" rel="prev" title="再见2017">
+                再见2017 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="dudu" />
+            
+              <p class="site-author-name" itemprop="name">dudu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archiv">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="duyuqing.2009@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/dorisandlistening" target="_blank" title="Weibo">
+                    
+                      <i class="fa fa-fw fa-Weibo"></i>Weibo</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://youku.com/yourname" target="_blank" title="YouKu">
+                    
+                      <i class="fa fa-fw fa-youtube"></i>YouKu</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://instagram.com/yourname" target="_blank" title="Instagram">
+                    
+                      <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是作用域链和闭包"><span class="nav-number">1.</span> <span class="nav-text">什么是作用域链和闭包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理解JavaScript的原型链以及JavaScript的继承方式"><span class="nav-number">2.</span> <span class="nav-text">理解JavaScript的原型链以及JavaScript的继承方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6的语法"><span class="nav-number">3.</span> <span class="nav-text">ES6的语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跨域的解决策略"><span class="nav-number">4.</span> <span class="nav-text">跨域的解决策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#xss劫持（跨站攻击）"><span class="nav-number">5.</span> <span class="nav-text">xss劫持（跨站攻击）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cookie-localStorage-sessionStorage的区别"><span class="nav-number">6.</span> <span class="nav-text">cookie localStorage sessionStorage的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#webpack打包的原理"><span class="nav-number">7.</span> <span class="nav-text">webpack打包的原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#域名输入URL之后，页面发生了什么"><span class="nav-number">8.</span> <span class="nav-text">域名输入URL之后，页面发生了什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#this"><span class="nav-number">9.</span> <span class="nav-text">this</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BFC问题（块级格式上下文）"><span class="nav-number">10.</span> <span class="nav-text">BFC问题（块级格式上下文）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#水平垂直居中实现"><span class="nav-number">11.</span> <span class="nav-text">水平垂直居中实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络-性能优化"><span class="nav-number">12.</span> <span class="nav-text">网络/性能优化</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dudu</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

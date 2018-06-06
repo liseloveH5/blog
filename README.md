@@ -1,7 +1,6 @@
 ### hexo安装
 ```
 $ npm install -g hexo //安装
-$ hexo init //初始化
 $ hexo clean  //清理public文件夹
 $ hexo g //生成 
 $ hexo s //启动服务 本地访问：http://localhost:4000

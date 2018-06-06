@@ -1,6 +1,7 @@
 ---
 title: VUEX用法和介绍
 date: 2017-10-25 15:06:02
+categories: 代码
 tags:
     - vue
     - 框架
